@@ -9,6 +9,11 @@ use Dotenv\Dotenv;
 class Test extends TestCase
 {
     /**
+     * @var Client
+     */
+    private $client;
+
+    /**
      * @expectedException ArgumentCountError
      */
     public function testInstantiationFail1()
@@ -39,10 +44,44 @@ class Test extends TestCase
         $this->assertInstanceOf(Client::class, $client);
 
         $this->assertInstanceOf(stdClass::class, $client->obtainAccessToken());
+
+        return $client;
     }
 
-    public function testSubmitLink()
+    /**
+     * @depends testInstantiationSuccess
+     */
+    public function testTextSubmit(Client $client)
     {
+        $res = $client->submit(
+            'u_' . getenv('APP_USERNAME'),
+            'Hello there, this is a test text post!',
+            'self',
+            null,
+            'Hello world'
+        );
 
+        $this->assertTrue(
+            is_string($res)
+            && substr($res, 0, 4) === 'http'
+        );
+    }
+
+    /**
+     * @depends testInstantiationSuccess
+     */
+    public function testLinkSubmit(Client $client)
+    {
+        $res = $client->submit(
+            'u_' . getenv('APP_USERNAME'),
+            'Hello there, this is a test link post!',
+            'link',
+            'https://www.reddit.com/dev/api/'
+        );
+
+        $this->assertTrue(
+            is_string($res)
+            && substr($res, 0, 4) === 'http'
+        );
     }
 }
