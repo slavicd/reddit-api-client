@@ -5,7 +5,8 @@ Composer library for posting Reddit links to the developer account programmatica
 * create an app on Reddit
 * `composer require slavicd/reddit-api-client:*@dev`
 
-```(php)
+```php
+<?php
 require 'vendor/autoload.php';
 $rdtClient = new Entropi\RedditClient\Client($config);  // see code for required $config keys
 ```
