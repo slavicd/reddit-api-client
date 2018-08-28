@@ -3,7 +3,7 @@ Composer library for posting Reddit links to the developer account programmatica
 ## Usage
 
 * create an app on Reddit
-* composer require this repo
+* composer require slavicd/reddit-api-client:*@dev 
 
 ```(php)
 require 'vendor/autoload.php';
