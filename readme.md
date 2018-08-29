@@ -9,6 +9,7 @@ Composer library for posting Reddit links to the developer account programmatica
 <?php
 require 'vendor/autoload.php';
 $rdtClient = new Entropi\RedditClient\Client($config);  // see code for required $config keys
+$rdtClient->submit('technology', 'Post about technology', 'self', null, 'Hello world!');
 ```
 
 
