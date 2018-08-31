@@ -1,5 +1,7 @@
 Composer library for posting Reddit links to the developer account programmatically.
 
+https://www.reddit.com/dev/api/
+
 ## Usage
 
 * create an app on Reddit
