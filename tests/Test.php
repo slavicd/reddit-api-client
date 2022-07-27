@@ -14,24 +14,24 @@ class Test extends TestCase
     private $client;
 
     /**
-     * @expectedException ArgumentCountError
      */
     public function testInstantiationFail1()
     {
+        $this->expectException(ArgumentCountError::class);
         new Client();
     }
 
     /**
-     * @expectedException InvalidArgumentException
      */
     public function testInstantiationFail2()
     {
+        $this->expectException(InvalidArgumentException::class);
         new Client([]);
     }
 
     public function testInstantiationSuccess()
     {
-        $dotenv = new Dotenv(__DIR__ . '/..');
+        $dotenv = Dotenv::create(__DIR__ . '/..');
         $dotenv->load();
 
         $client = new Client([
